@@ -10,6 +10,8 @@ let UpdateService=require('../../services/common/UpdateService');
 let checkAssociation=require('../../services/common/CheckAssociationService');
 let DeleteService=require('../../services/common/DeleteService');
 const mongoose = require("mongoose");
+const DetailsByIdService = require("../../services/common/DetailsByIdService");
+const brandModel = require("../../model/Brands/brandsModel");
 
 
 exports.createCustomers=async (req,res)=>{
@@ -34,12 +36,17 @@ exports.customersDropDown=async (req,res)=>{
     res.status(200).json(data);
 };
 
+exports.customerDetailsById=async (req,res)=>{
+    const result=await DetailsByIdService(req,customerModel);
+    res.status(200).json(result);
+}
+
 exports.deleteCustomers=async (req,res)=>{
     let ObjectId=mongoose.Types.ObjectId;
     let deleteId=new ObjectId(req.params.Id);
     let checkAssociationWithSales=await checkAssociation({customerID:deleteId},salesModel);
-    let chackAssociationWithReturn=await checkAssociation({customerID:deleteId},retunrModel);
-    if(chackAssociationWithReturn){
+    let checkAssociationWithReturn=await checkAssociation({customerID:deleteId},retunrModel);
+    if(checkAssociationWithReturn){
         res.status(200).json({status:"associate",data:"Associate with Return Model"})
     }
     else if(checkAssociationWithSales){

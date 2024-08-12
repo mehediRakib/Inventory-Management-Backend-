@@ -6,6 +6,7 @@ let DataSchema = mongoose.Schema({
         brandID: {type: mongoose.Schema.Types.ObjectId},
         name: {type: String},
         unit: {type: String},
+        price:{type: String},
         details:{type:String},
         createDate: {type: Date, default: Date.now()}
     },

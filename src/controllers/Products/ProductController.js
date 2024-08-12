@@ -9,6 +9,8 @@ let listTwoJoinService=require('../../services/common/ListTwoJoinService');
 let DeleteService=require('../../services/common/DeleteService');
 let CheckAssociationService=require('../../services/common/CheckAssociationService');
 const mongoose = require("mongoose");
+const DetailsByIdService = require("../../services/common/DetailsByIdService");
+const brandModel = require("../../model/Brands/brandsModel");
 
 
 
@@ -26,10 +28,15 @@ exports.ProductList=async (req,res)=>{
     let joinWithCategory={$lookup:{from:"categories",localField:"categoryID",foreignField:"_id", as:"category"}};
     let joinWithBrand={$lookup:{from:"brands",localField:"brandID",foreignField:"_id", as:"brand"}};
     let SearchRegx={$regex:req.params.searchKeyword,$options:'i'};
-    let searchArray=[{name:SearchRegx},{details:SearchRegx},{unit:SearchRegx},{"category.name":SearchRegx},{"brand.name":SearchRegx}]
+    let searchArray=[{name:SearchRegx},{details:SearchRegx},{unit:SearchRegx},{price:SearchRegx},{"category.name":SearchRegx},{"brand.name":SearchRegx}]
     let data=await listTwoJoinService(req,productModel,searchArray,joinWithCategory,joinWithBrand);
     res.status(200).json(data);
 };
+
+exports.productDetailsById=async (req,res)=>{
+    const result=await DetailsByIdService(req,productModel);
+    res.status(200).json(result);
+}
 
 exports.DeleteProduct=async (req,res)=>{
     let objectId=mongoose.Types.ObjectId;

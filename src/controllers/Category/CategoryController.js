@@ -9,6 +9,7 @@ let UpdateService=require('../../services/common/UpdateService');
 const mongoose = require("mongoose");
 const checkAssociationService = require("../../services/common/CheckAssociationService");
 const DeleteService = require("../../services/common/DeleteService");
+const DetailsByIdService = require("../../services/common/DetailsByIdService");
 
 
 exports.createCategory=async (req,res)=>{
@@ -32,6 +33,11 @@ exports.categoryDropDown=async (req,res)=>{
     const data=await DropDownService(req,categoryModel,{_id:1,name:1});
     res.status(200).json(data);
 };
+
+exports.categoryDetailsById=async (req,res)=>{
+    const result=await DetailsByIdService(req,categoryModel);
+    res.status(200).json(result);
+}
 
 exports.DeleteCategory=async (req,res)=>{
     let DeleteID=req.params.Id;

@@ -9,7 +9,7 @@ const DecodeToken=(req,res,next)=>{
             req.headers.email=email;
             next();
         }
-    })
+    }) 
 }
 
 module.exports=DecodeToken;

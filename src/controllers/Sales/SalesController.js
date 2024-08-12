@@ -4,6 +4,8 @@ const salesProductModel=require('../../model/Sales/SalesProductModel');
 const salesList=require('../../services/common/ListOneJoinService');
 let createSalesService=require('../../services/common/CreateParentChildService');
 let deleteSalesService=require('../../services/common/DeleteParentChildService');
+const DetailsByIdService = require("../../services/common/DetailsByIdService");
+const brandModel = require("../../model/Brands/brandsModel");
 
 const createSales=async (req,res)=>{
     let data=await createSalesService(req,salesModel,salesProductModel,"salesID");
@@ -18,6 +20,11 @@ const SalesList=async (req,res)=>{
     res.status(200).json(data);
 };
 
+const salesDetailsById=async (req,res)=>{
+    let result=await DetailsByIdService(req,salesModel);
+    res.status(200).json(result);
+};
+
 const SelesDelete=async (req,res)=>{
     let data=await deleteSalesService(req,salesModel,salesProductModel,'salesID')
     res.status(200).json(data);
@@ -26,5 +33,6 @@ const SelesDelete=async (req,res)=>{
 module.exports={
     createSales,
     SalesList,
-    SelesDelete
+    SelesDelete,
+    salesDetailsById
 }

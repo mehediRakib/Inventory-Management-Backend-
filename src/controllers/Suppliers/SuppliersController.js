@@ -9,6 +9,8 @@ let UpdateService=require('../../services/common/UpdateService');
 let DeleteService=require('../../services/common/DeleteService');
 let checkAssociationService=require('../../services/common/CheckAssociationService');
 const mongoose = require("mongoose");
+const DetailsByIdService = require("../../services/common/DetailsByIdService");
+const brandModel = require("../../model/Brands/brandsModel");
 
 
 exports.createSuppliers=async (req,res)=>{
@@ -31,6 +33,11 @@ exports.suppliersList=async (req,res)=>{
 exports.suppliersDropDown=async (req,res)=>{
     const data=await DropDownService(req,SupplierModel,{_id:1,supplierName:1});
     res.status(200).json(data);
+};
+
+exports.suppliersDetailsById=async (req,res)=>{
+    const result=await DetailsByIdService(req,SupplierModel);
+    res.status(200).json(result);
 }
 
 exports.DeleteSuppliers=async (req,res)=>{

@@ -1,4 +1,4 @@
-const OTPModel=require('../../model/Users/OTPModel');
+ const OTPModel=require('../../model/Users/OTPModel');
 
 const SentEmail=require('../../utility/sentEmail');
 const UserVerifyEmailService=async (req,DataModel)=>{

@@ -7,6 +7,7 @@ let ListService=require('../../services/common/ListService');
 let UpdateService=require('../../services/common/UpdateService');
 let checkAssociationService=require('../../services/common/CheckAssociationService');
 let DeleteService=require('../../services/common/DeleteService');
+let DetailsByIdService=require('../../services/common/DetailsByIdService');
 const mongoose = require("mongoose");
 
 
@@ -32,6 +33,11 @@ exports.brandList=async (req,res)=>{
     const data=await ListService(req,brandModel,SearchArray);
     res.status(200).json(data);
 };
+
+exports.brandDetailsById=async (req,res)=>{
+    const result=await DetailsByIdService(req,brandModel);
+    res.status(200).json(result);
+}
 
 exports.DeleteBrand=async (req,res)=>{
     let DeleteID=req.params.Id;

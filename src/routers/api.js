@@ -34,6 +34,7 @@ router.post('/brandUpdate/:Id',userAuthMiddleware,brandController.updateBrand);
 router.get('/brandList/:pageNo/:perPage/:searchKeyword',userAuthMiddleware,brandController.brandList);
 router.get('/brandDropDown',userAuthMiddleware,brandController.brandDropDown);
 router.get('/DeleteBrand/:Id',userAuthMiddleware,brandController.DeleteBrand);
+router.get('/brandDetailsById/:Id',userAuthMiddleware,brandController.brandDetailsById);
 
 
 //Category Api
@@ -42,6 +43,7 @@ router.post('/categoryUpdate/:Id',userAuthMiddleware,categoryController.updateCa
 router.get('/categoryList/:pageNo/:perPage/:searchKeyword',userAuthMiddleware,categoryController.categoryList);
 router.get('/categoryDropDown',userAuthMiddleware,categoryController.categoryDropDown);
 router.get('/DeleteCategory/:Id',userAuthMiddleware,categoryController.DeleteCategory);
+router.get('/categoryDetailsById/:Id',userAuthMiddleware,categoryController.categoryDetailsById);
 
 //Customer Api
 router.post('/createCustomer',userAuthMiddleware,customerController.createCustomers);
@@ -49,6 +51,7 @@ router.post('/UpdateCustomers/:Id',userAuthMiddleware,customerController.updateC
 router.get('/CustomerList/:pageNo/:perPage/:searchKeyword',userAuthMiddleware,customerController.customersList);
 router.get('/CustomerDropDown',userAuthMiddleware,customerController.customersDropDown);
 router.get('/DeleteCustomer/:Id',userAuthMiddleware, customerController.deleteCustomers);
+router.get('/customerDetailsById/:Id',userAuthMiddleware,customerController.customerDetailsById);
 
 
 //Suppliers Api
@@ -57,6 +60,7 @@ router.post('/UpdateSuppliers/:Id',userAuthMiddleware,supplierController.updateS
 router.get('/SupplierList/:pageNo/:perPage/:searchKeyword',userAuthMiddleware,supplierController.suppliersList);
 router.get('/SupplierDropDown',userAuthMiddleware,supplierController.suppliersDropDown);
 router.get('/DeleteSuppliers/:Id',userAuthMiddleware,supplierController.DeleteSuppliers);
+router.get('/suppliersDetailsById/:Id',userAuthMiddleware,supplierController.suppliersDetailsById);
 
 
 //Expenses Types
@@ -64,6 +68,7 @@ router.post('/createExpenseTypes',userAuthMiddleware,expenseTypesController.crea
 router.post('/UpdateExpenseTypes/:Id',userAuthMiddleware,expenseTypesController.updateExpensesTypes);
 router.get('/ExpenseTypesList/:pageNo/:perPage/:searchKeyword',userAuthMiddleware,expenseTypesController.ExpenseTypesList);
 router.get('/ExpenseTypesDropDown',userAuthMiddleware,expenseTypesController.expensesTypesDropDown);
+router.get('/expenseTypesDetailsById/:Id',userAuthMiddleware,expenseTypesController.expenseTypesDetailsById);
 
 
 // Expense
@@ -71,6 +76,7 @@ router.post('/createExpense',userAuthMiddleware,expenseController.createExpense)
 router.post('/UpdateExpense/:Id',userAuthMiddleware,expenseController.updateExpense);
 router.get("/ExpensesList/:pageNo/:perPage/:searchKeyword",userAuthMiddleware,expenseController.expenseList);
 router.get('/DeleteExpense/:Id',userAuthMiddleware,expenseController.deleteExpense);
+router.get('/expenseDetailsById/:Id',userAuthMiddleware,expenseController.expenseDetailsById);
 
 
 //Product Api
@@ -78,18 +84,21 @@ router.post('/createProduct',userAuthMiddleware,productController.createProducts
 router.post('/UpdateProduct/:Id',userAuthMiddleware,productController.updateProduct);
 router.get("/ProductList/:pageNo/:perPage/:searchKeyword",userAuthMiddleware,productController.ProductList);
 router.get('/DeleteProduct/:Id',userAuthMiddleware,productController.DeleteProduct);
+router.get('/productDetailsById/:Id',userAuthMiddleware,productController.productDetailsById);
 
 
-// Puchase api
+// Purchase api
 router.post('/createPurchase',userAuthMiddleware,purchaseController.createPurchase);
 router.get('/purchaseList/:pageNo/:perPage/:searchKeyword',userAuthMiddleware,purchaseController.purchaseList);
 router.get('/deletePurchase/:id',userAuthMiddleware,purchaseController.deletePurchase);
+router.get('/purchaseDetailsById/:Id',userAuthMiddleware,purchaseController.purchaseDetailsById);
 
 
 //Sales api
 router.post('/createSales',userAuthMiddleware,salesController.createSales);
 router.get('/salesList/:pageNo/:perPage/:searchKeyword',userAuthMiddleware,salesController.SalesList);
 router.get('/deleteSales/:id',userAuthMiddleware,salesController.SelesDelete);
+router.get('/salesDetailsById/:Id',userAuthMiddleware,salesController.salesDetailsById);
 
 
 //Return Api

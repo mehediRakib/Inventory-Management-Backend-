@@ -4,6 +4,8 @@ let createService=require('../../services/common/CreateService');
 let UpdateService=require('../../services/common/UpdateService');
 let ListOneJoinService=require('../../services/common/ListOneJoinService');
 let DeleteExpenseService=require('../../services/common/DeleteService');
+const DetailsByIdService = require("../../services/common/DetailsByIdService");
+const brandModel = require("../../model/Brands/brandsModel");
 
 exports.createExpense=async (req,res)=>{
     const data=await createService(req,ExpenseModel);
@@ -22,9 +24,15 @@ exports.expenseList=async (req,res)=>{
     let data=await ListOneJoinService(req,ExpenseModel,searchArray,joinWithExpenseType);
     res.status(200).json(data);
 };
+exports.expenseDetailsById=async (req,res)=>{
+    const result=await DetailsByIdService(req,ExpenseModel);
+    res.status(200).json(result);
+}
 
 exports.deleteExpense=async (req,res)=>{
     let data=await DeleteExpenseService(req,ExpenseModel);
     res.status(200).json(data);
 };
+
+
 
