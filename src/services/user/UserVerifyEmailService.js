@@ -7,9 +7,9 @@ const UserVerifyEmailService=async (req,DataModel)=>{
        let otp=Math.floor(100000+Math.random()*900000)
        const user=(await DataModel.aggregate([{$match:{email:email}},({$count:"total"})]))
        if(user.length>0){
-           await OTPModel.updateOne({email:email},{otp:otp},{upsert:true});
+           await OTPModel.create({email:email,otp:otp});
            let sendEmail=await SentEmail(email,"Inventory Management System PIN verification", `Your PIN code is : ${otp}`);
-           return  {status:"success",data:sendEmail};
+           return  {status:"success",otp:otp,data:sendEmail};
        }
        else
        {

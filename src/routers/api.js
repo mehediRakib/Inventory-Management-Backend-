@@ -69,6 +69,7 @@ router.post('/UpdateExpenseTypes/:Id',userAuthMiddleware,expenseTypesController.
 router.get('/ExpenseTypesList/:pageNo/:perPage/:searchKeyword',userAuthMiddleware,expenseTypesController.ExpenseTypesList);
 router.get('/ExpenseTypesDropDown',userAuthMiddleware,expenseTypesController.expensesTypesDropDown);
 router.get('/expenseTypesDetailsById/:Id',userAuthMiddleware,expenseTypesController.expenseTypesDetailsById);
+router.get('/DeleteExpenseTypesById/:Id',userAuthMiddleware,expenseTypesController.DeleteExpenseTypesList);
 
 
 // Expense
@@ -85,6 +86,7 @@ router.post('/UpdateProduct/:Id',userAuthMiddleware,productController.updateProd
 router.get("/ProductList/:pageNo/:perPage/:searchKeyword",userAuthMiddleware,productController.ProductList);
 router.get('/DeleteProduct/:Id',userAuthMiddleware,productController.DeleteProduct);
 router.get('/productDetailsById/:Id',userAuthMiddleware,productController.productDetailsById);
+router.get('/ProductListDropdown',userAuthMiddleware,productController.productListDropdown);
 
 
 // Purchase api
@@ -108,10 +110,10 @@ router.get('/deleteReturn/:id',userAuthMiddleware,returnController.DeleteReturnL
 
 
 //Report api
-router.get('/ExpensesByDate',userAuthMiddleware,reportController.ExpenseByDate);
-router.get('/PurchaseByDate',userAuthMiddleware,reportController.PurchaseByDate);
-router.get('/SalesByDate',userAuthMiddleware,reportController.SalesByDate);
-router.get('/ReturnByDate',userAuthMiddleware,reportController.ReturnByDate);
+router.post('/ExpensesByDate',userAuthMiddleware,reportController.ExpenseByDate);
+router.post('/PurchaseByDate',userAuthMiddleware,reportController.PurchaseByDate);
+router.post('/SalesByDate',userAuthMiddleware,reportController.SalesByDate);
+router.post('/ReturnByDate',userAuthMiddleware,reportController.ReturnByDate);
 
 
 

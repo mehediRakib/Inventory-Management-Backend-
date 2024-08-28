@@ -65,7 +65,7 @@ mongoose.connect(URL,option).then(()=>{
 
 app.use('/api/v1',Router);
 
-app.use("*",(res,req)=>{
+app.use("*",(req,res)=>{
     res.status(404).json({status:"fail",data:"Not Found"});
 })
 

@@ -11,6 +11,7 @@ let CheckAssociationService=require('../../services/common/CheckAssociationServi
 const mongoose = require("mongoose");
 const DetailsByIdService = require("../../services/common/DetailsByIdService");
 const brandModel = require("../../model/Brands/brandsModel");
+const DropDownService = require("../../services/common/DropDownService");
 
 
 
@@ -61,5 +62,10 @@ exports.DeleteProduct=async (req,res)=>{
      }
 
 
+}
+
+exports.productListDropdown=async (req,res)=>{
+    const result=await DropDownService(req,productModel,{_id:1,name:1});
+    res.status(200).json(result);
 }
 
